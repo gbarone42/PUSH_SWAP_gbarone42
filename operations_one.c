@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   operations_one.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:18:25 by mcerchi           #+#    #+#             */
-/*   Updated: 2022/02/26 14:49:33 by mcerchi          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:20:23 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
-
+/* //old
 void	ft_sa(t_list **stack_a)
 {
 	t_list	*tmp;
@@ -25,6 +25,24 @@ void	ft_sa(t_list **stack_a)
 	write(1, "sa\n", 3);
 	return ;
 }
+*/	
+void	ft_sa(t_list **stack_a)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp = *stack_a;
+	tmp2 = tmp->next;
+
+  if (*stack_a == NULL || (*stack_a)->next == NULL)
+        return;
+	*stack_a = tmp2; // il contenuto di tmp2 sarà cio a cui punto stack_a ( i vari valori)
+	tmp->next = tmp2->next;
+	tmp2->next = tmp;
+	write(1, "sa\n", 3);
+}
+
+
 
 void	ft_sb(t_list **stack_b)
 {

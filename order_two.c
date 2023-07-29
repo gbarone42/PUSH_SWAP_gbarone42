@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   order_two.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 14:49:08 by mcerchi           #+#    #+#             */
-/*   Updated: 2022/02/26 14:49:40 by mcerchi          ###   ########.fr       */
+/*   Updated: 2023/06/18 21:22:05 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,24 @@ int	ft_the_needed(int min, int max, int size)
 	return (i);
 }
 
+/*
+//old
+
 int	ft_the_needed_b(int max, int size)
 {
 	if (max > (size / 2))
 		max = max - size;
 	return (max);
 }
+*/
+int ft_the_needed_b(int max, int size)
+{
+    if (max > (size / 2))
+        return max - size;
+    else
+        return max;
+}
+
 
 int	ft_the_needed_a(t_list *stack_a, int cont, int size)
 {

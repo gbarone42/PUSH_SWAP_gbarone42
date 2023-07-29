@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_three.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: barone <barone@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:18:50 by mcerchi           #+#    #+#             */
-/*   Updated: 2022/02/26 14:49:35 by mcerchi          ###   ########.fr       */
+/*   Updated: 2023/06/18 22:23:22 by barone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_rra(t_list **stack_a)
 
 	last = *stack_a;
 	tmp = *stack_a;
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+        return;
 	while (last->next != NULL)
 	{
 		tmp = last;

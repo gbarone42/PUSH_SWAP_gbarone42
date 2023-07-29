@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_two.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: barone <barone@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:18:37 by mcerchi           #+#    #+#             */
-/*   Updated: 2022/02/26 14:49:37 by mcerchi          ###   ########.fr       */
+/*   Updated: 2023/06/18 22:27:52 by barone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	ft_ra(t_list **stack_a)
 	t_list	*last;
 	t_list	*first;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
 	last = *stack_a;
 	first = *stack_a;
+
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
 	while (last->next != NULL)
 		last = last->next;
 	*stack_a = first->next;

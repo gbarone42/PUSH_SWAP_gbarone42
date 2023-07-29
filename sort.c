@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 14:49:57 by mcerchi           #+#    #+#             */
-/*   Updated: 2022/02/26 14:49:58 by mcerchi          ###   ########.fr       */
+/*   Updated: 2023/06/20 22:07:59 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
-
+/*
 void	ft_sort_three(t_list **stack_a)
 {
 	int		i;
@@ -41,6 +41,30 @@ void	ft_sort_three(t_list **stack_a)
 			ft_rra(stack_a);
 	}
 }
+*/
+
+
+void ft_sort_three(t_list **stack_a)
+{
+    int a;
+    int	b;
+    int	c;
+
+	a = (*stack_a)->content;
+	b = (*stack_a)->next->content;	
+	c = (*stack_a)->next->next->content;
+	if ((a > b && b < c && c > a)
+		|| (a > b && b > c && c < a)
+		|| (a < b && b > c && c > a))
+        ft_sa(stack_a);
+    else if (a > b && b < c && c < a)
+        ft_ra(stack_a);
+    else if (a < b && b > c && c < a)
+        ft_rra(stack_a);
+}
+
+
+
 
 void	ft_sort_five(t_list **stack_a, t_list **stack_b)
 {
