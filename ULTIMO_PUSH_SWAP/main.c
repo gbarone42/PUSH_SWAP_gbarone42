@@ -6,7 +6,7 @@
 /*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/01 15:48:58 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/01 18:44:32 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int check_av_space(int ac, char **av)
 	{
 		if (check_duplicate(args) && !ft_isdigit_and_sign(argz))
 		{
-			free(args); // Free memory allocated by split?
-			ft_error_double();
+			ft_free_args(args); // Free memory allocated by split?
+			ft_error();
 		}
-		free(args); //`Free memory allocated by split?
+		ft_free_args(args); //`Free memory allocated by split?
 		return (0);
 	}
 	return (0);

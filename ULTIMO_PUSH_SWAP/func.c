@@ -149,3 +149,20 @@ char	**ft_split(const char *s, char c)
 	split[j] = 0;
 	return (split);
 }
+
+
+void ft_free_args(char **str_array)
+{
+    if (str_array)
+    {
+        int i = 0;
+        while (str_array[i])
+        {
+            free(str_array[i]);
+            i++;
+        }
+        free(str_array);
+    }
+}
+
+

@@ -26,5 +26,6 @@ int ft_strcmp(const char *str1, const char *str2);
 int	ft_isdigit_and_sign(int c);
 int	ft_atoi(const char *str);
 char	**ft_split(const char *s, char c);
+void ft_free_args(char **str_array);
 
 #endif
