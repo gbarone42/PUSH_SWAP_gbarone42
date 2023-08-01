@@ -6,16 +6,16 @@
 /*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/07/31 23:00:08 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/01 00:58:16 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_doubles(char **str)
+int check_duplicate(char **str)
 {
     int a = 0;
     int b;
     
-    while (str[a])//as long as the element at index a in the array str is not NULL 
+    while (str[a])
     {
         b = a + 1;
         while (str[b])
@@ -38,7 +38,7 @@ int	check_av_space(int ac, char **av)
 		ft_error_few_arg();
 	else if (ac == 2)
 	{	args = ft_split(av[1],' ');
-		if(check_doubles(args))
+		if(check_duplicate(args))
 		{	
 			//freememory allocated by split
 			//free args?
@@ -50,7 +50,7 @@ int	check_av_space(int ac, char **av)
 	}
 	else
 	{
-		if(check_doubles(av))
+		if(check_duplicate(av))
 			ft_error_double();
 	}
 	return(0);
