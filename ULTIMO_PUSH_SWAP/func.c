@@ -33,7 +33,7 @@ int ft_strcmp(const char *str1, const char *str2)
     return (int)((unsigned char)*str1 - (unsigned char)*str2);
 }
 
-
+/*
 int ft_isdigit_and_sign(int c)
 {
     if (c >= '0' && c <= '9')
@@ -42,9 +42,23 @@ int ft_isdigit_and_sign(int c)
     }
     else if ((c == '-' || c == '+') && ft_isdigit_and_sign(c + 1))
     {
-        return 1;
+        return 1; // return(0)
     }
     return 0; // Not a digit
+}
+*/
+
+int ft_isdigit_and_sign(int c)
+{
+    if (c == '-' || c == '+')
+    {
+        return 1; // Treat '-' and '+' as valid sign characters
+    }
+    else if (c >= '0' && c <= '9')
+    {
+        return 1; // Digit character
+    }
+    return 0; // Not a digit or sign
 }
 
 int	ft_atoi(const char *str)
