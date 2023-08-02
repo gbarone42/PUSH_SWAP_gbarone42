@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/02 04:04:13 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/02 23:28:25 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,22 @@ t_stack *allocate_stack(char **str)
 	return (head);
 }
 
+int count_elements(t_stack *A)
+{
+    int count;
+	
+	count = 0;
+    t_stack *current = A;
+    while (current != NULL)
+    {
+        count++;
+        current = current->next;
+    }
+
+    return count;
+}
+
+
 int main(int ac, char **av)
 {
 	int argz;
@@ -78,4 +94,9 @@ int main(int ac, char **av)
     //   printf("Memory allocation failed. Exiting...\n");
     //    return 1;
     //}
+	if(count_elements(stacks.a) == 1)
+	{
+		free(stacks.a);
+		return (0);
+	}
 }
