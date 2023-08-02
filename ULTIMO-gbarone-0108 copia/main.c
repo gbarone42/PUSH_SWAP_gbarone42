@@ -6,7 +6,7 @@
 /*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/02 02:04:33 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/02 04:04:13 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int check_av(int ac, char **av)
 	return(0);
 }
 
-/*
+
 t_stack *allocate_stack(char **str)
 {
 	int i;
@@ -46,34 +46,36 @@ t_stack *allocate_stack(char **str)
 	t_stack *prev = NULL;
 
 	i = 0;
-	while (str[i])
+	if (!str || !str[0])// Handle the case of an empty input or NULL pointer
+        return NULL;
+	while (str[i])//till its !(NULL), till encounters NULLpointer // linked list is built during the loop
 	{
-		current = malloc(sizeof(t_stack));
-		if (!current)
+		current = malloc(sizeof(t_stack));//size of memory block is determined by the size  oft_stack structure representing a node in the linked list.
+		if (!current) // After allocating memory for the current node, the function checks if the allocation was successful by verifying if current is not NULL. If the allocation fails (current is NULL), the function returns NULL, indicating that there was a memory allocation failure. This can be handled later in the program if needed.
 			return (NULL); // Handle allocation failure, or you can exit the program
 		current->content = ft_atoi(str[i]);
 		current->next = NULL;
-
-		if (!head)
+		if (!head) // means we are at the beginning of the list, since this is the first node
 			head = current; // Set head if it's not set already
-
 		if (prev)
 			prev->next = current; // Link the previous node to the current node
-
 		prev = current; // Move the previous pointer to the current node
 		i++;
 	}
-
 	return (head);
 }
-*/
+
 int main(int ac, char **av)
 {
 	int argz;
-	
 	t_inter stacks;
 
 	if (check_av(ac, av))
 		return (1);
-	//stacks.a = allocate_stack(av);
+	stacks.a = allocate_stack(av);
+	//  if (!stacks.a)
+    //{
+    //   printf("Memory allocation failed. Exiting...\n");
+    //    return 1;
+    //}
 }
