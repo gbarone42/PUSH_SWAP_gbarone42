@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 int digitsandsignsvalid(const char *str)
 {
     int isValid = 1;

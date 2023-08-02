@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void ft_error(void)
 {
     ft_printf("\n");
