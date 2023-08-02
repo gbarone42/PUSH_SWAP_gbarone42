@@ -11,11 +11,11 @@ typedef struct s_stack
 	struct s_stack	*next;
 } t_stack;
 
-typedef struct s_inter
+typedef struct s_stack_list
 {
 	t_stack		*a;
 	t_stack		*b;
-} t_inter;
+} t_stack_list;
 
 t_stack	*allocate_stack(char **str);
 int	main(int ac, char **av);

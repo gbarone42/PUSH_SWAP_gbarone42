@@ -12,41 +12,6 @@ void	ft_sa(t_list **stack_a)
 	return ;
 }
 
-void	ft_sb(t_list **stack_b)
-{
-	t_list	*tmp;
-	t_list	*tmp2;
-
-	tmp = *stack_b;
-	tmp2 = tmp->next;
-	*stack_b = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
-	write(1, "sb\n", 3);
-	return ;
-}
-
-void	ft_ss(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*tmp;
-	t_list	*tmp2;
-
-	tmp = *stack_a;
-	tmp2 = tmp->next;
-	*stack_a = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
-	tmp = NULL;
-	tmp2 = NULL;
-	tmp = *stack_b;
-	tmp2 = tmp->next;
-	*stack_b = tmp2;
-	tmp->next = tmp2->next;
-	tmp2->next = tmp;
-	write(1, "ss\n", 3);
-	return ;
-}
-
 void	ft_pa(t_list **stack_b, t_list **stack_a)
 {
 	t_list	*tmp;
@@ -93,6 +58,62 @@ void	ft_ra(t_list **stack_a)
 	return ;
 }
 
+
+void	ft_rra(t_list **stack_a)
+{
+	t_list	*last;
+	t_list	*tmp;
+
+	last = *stack_a;
+	tmp = *stack_a;
+	while (last->next != NULL)
+	{
+		tmp = last;
+		last = last->next;
+	}
+	last->next = *stack_a;
+	*stack_a = last;
+	tmp->next = NULL;
+	write(1, "rra\n", 4);
+}
+
+
+
+void	ft_sb(t_list **stack_b)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp = *stack_b;
+	tmp2 = tmp->next;
+	*stack_b = tmp2;
+	tmp->next = tmp2->next;
+	tmp2->next = tmp;
+	write(1, "sb\n", 3);
+	return ;
+}
+
+void	ft_ss(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp = *stack_a;
+	tmp2 = tmp->next;
+	*stack_a = tmp2;
+	tmp->next = tmp2->next;
+	tmp2->next = tmp;
+	tmp = NULL;
+	tmp2 = NULL;
+	tmp = *stack_b;
+	tmp2 = tmp->next;
+	*stack_b = tmp2;
+	tmp->next = tmp2->next;
+	tmp2->next = tmp;
+	write(1, "ss\n", 3);
+	return ;
+}
+
 void	ft_rb(t_list **stack_b)
 {
 	t_list	*last;
@@ -136,24 +157,6 @@ void	ft_rr(t_list **stack_a, t_list **stack_b)
 	last->next = first;
 	write(1, "rr\n", 3);
 	return ;
-}
-
-void	ft_rra(t_list **stack_a)
-{
-	t_list	*last;
-	t_list	*tmp;
-
-	last = *stack_a;
-	tmp = *stack_a;
-	while (last->next != NULL)
-	{
-		tmp = last;
-		last = last->next;
-	}
-	last->next = *stack_a;
-	*stack_a = last;
-	tmp->next = NULL;
-	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_list **stack_b)
