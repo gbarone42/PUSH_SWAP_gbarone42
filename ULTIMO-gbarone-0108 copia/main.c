@@ -88,50 +88,6 @@ int check_av(char **av)
 	}
     return 0;
 }
-/*
-int check_av(char **av)
-{
-	    char **args = ft_split(*av, ' ');
-        if (!args)
-        {
-			
-            ft_error();
-            return 1;
-        }
-
-    int i = 0;
-
-   while (args[i])
-    {
-		if (!check_duplicate(args))
-        {   
-
-			printf("ooook");
-			free_split(args);
-            ft_errorrrr();
-            return 1;
-        }
-        int j = 0;
-        while (args[i][j])
-        {
-            int ascii = args[i][j];
-            if (ft_isdigit_and_sign(ascii))
-            {
-				free_split(args);
-                ft_errorrrrr();
-                return 1;
-            }
-            j++;
-        }
-        i++;
-    }
-	free_split(args);
-    return 0;
-}
-
-*/
-
-
 
 
 t_stack *allocate_stack(char **str)
@@ -142,10 +98,12 @@ t_stack *allocate_stack(char **str)
 	t_stack *prev = NULL;
 
 	i = 0;
+	//printf("outsideloopallocate");
 	if (!str || !str[0])// Handle the case of an empty input or NULL pointer
         return NULL;
 	while (str[i])//till its !(NULL), till encounters NULLpointer // linked list is built during the loop
 	{
+		//	printf("inside loop");
 		current = malloc(sizeof(t_stack));//size of memory block is determined by the size  oft_stack structure representing a node in the linked list.
 		if (!current) // After allocating memory for the current node, the function checks if the allocation was successful by verifying if current is not NULL. If the allocation fails (current is NULL), the function returns NULL, indicating that there was a memory allocation failure. This can be handled later in the program if needed.
 			return (NULL); // Handle allocation failure, or you can exit the program
@@ -167,8 +125,10 @@ int count_elements(t_stack *A)
 	
 	count = 0;
     t_stack *current = A;
+	//printf("outside");
     while (current != NULL)
     {
+	//	printf("1inside");
         count++;
         current = current->next;
     }
@@ -191,7 +151,7 @@ int check_av_b(int ac, char **av)
             int ascii = av[i][j];
             if (ft_isdigit_and_sign(ascii))
             {
-				printf("zxwwzwwwaax");
+				//printf("zxwwzwwwaax");
 				ft_errorrrrr();
 				return 1;
             }
@@ -213,28 +173,44 @@ int main(int ac, char **av)
 		ft_error_few_arg();
 		return(1);
 	}
-	stacks.a = allocate_stack(av);
-	stacks.b = NULL;
-	if(ac == 2)
+	if (ac >= 2)
 	{
-		check_av2(av);
+	    stacks.a = allocate_stack(av);
+	    stacks.b = NULL;
+	    if(ac == 2)
+		{	
+			//printf("woooa");
+			check_av2(av);
+			//return(1);
+		}
+	//printf("33woooa");
+		if (ac > 1 && ac != 2) //(ac > 2)
+		{	
+			check_av(av);
+			check_av_b(ac,av);
+			//return (0);
+		}
+
+	//printf("ooo22w23");
+		if(count_elements(stacks.a) == 1)
+		{	
+			printf("\n999ooo22w23");
+			free(stacks.a);
+			return (0);
+		}
+		//printf("2outside");
+		ft_radix_sort(&(stacks.a), &(stacks.b));
+	}
 		return(0);
-	}
-	if (ac > 1 && ac != 2) //(ac > 2)
-	{	
-		check_av(av);
-		check_av_b(ac,av);
-		//return (0);
-	}
-	printf("ooo22w23");
-	if(count_elements(stacks.a) == 1)
-	{
-		free(stacks.a);
-		return (0);
-	}
-	else
-	ft_radix_sort(&(stacks.a), &(stacks.b));
-	return(0);
 }
 
+
+
+
+/*Time Complexity: The provided implementation might end up
+with a high time complexity due to the multiple passes through
+the list for each digit. An efficient radix sort implementation
+typically processes each digit once, resulting in a time complexity
+of O(d * (n + k)), where n is the number of elements, d is the number
+of digits in the largest number, and k is the base (in this case, k=10).*/
 

@@ -54,6 +54,8 @@ int check_av2(char **av);
 void ft_errorrrrr(void);
 void ft_errorrr(void);
 void ft_errorrrr(void);
+void print_stack(t_stack *stack);
+void print_max_digit(int max_digit);
 
 void	ft_pa(t_stack **stack_b, t_stack **stack_a);
 void	ft_pb(t_stack **stack_a, t_stack **stack_b);

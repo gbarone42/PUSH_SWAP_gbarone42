@@ -14,6 +14,8 @@ int ft_isdigit_and_sign(int c)
     return 0; // Not a digit
 }
 */
+
+
 int	ft_atoi(const char *str)
 {
 	int	neg;

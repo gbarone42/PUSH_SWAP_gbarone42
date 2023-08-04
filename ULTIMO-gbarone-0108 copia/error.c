@@ -100,3 +100,20 @@ void ft_errorrrrr(void)
     write(1, "\n", 1);
     exit(1);
 }
+
+void print_stack(t_stack *stack)
+{
+    printf("Stack: ");
+    t_stack *current = stack;
+    while (current != NULL)
+    {
+        printf("%d ", current->content);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+void print_max_digit(int max_digit) 
+{
+    printf("Max Digit: %d\n", max_digit);
+}
