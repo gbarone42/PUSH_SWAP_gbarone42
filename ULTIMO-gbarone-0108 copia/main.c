@@ -187,7 +187,7 @@ int check_av_b(int ac, char **av)
         int j = 0;
         while (av[i][j] != '\0')
         {
-			printf("wwww");
+			//printf("wwww");
             int ascii = av[i][j];
             if (ft_isdigit_and_sign(ascii))
             {
@@ -208,7 +208,6 @@ int check_av_b(int ac, char **av)
 int main(int ac, char **av)
 {
 	t_stack_list stacks;
-
 	if(ac <= 1)
 	{
 		ft_error_few_arg();
@@ -216,23 +215,18 @@ int main(int ac, char **av)
 	}
 	stacks.a = allocate_stack(av);
 	stacks.b = NULL;
-
 	if(ac == 2)
 	{
-
 		check_av2(av);
-		//printf("sonodue");
 		return(0);
-
 	}
 	if (ac > 1 && ac != 2) //(ac > 2)
 	{	
 		check_av(av);
-		printf("wwww");
 		check_av_b(ac,av);
-
-		return (0);
+		//return (0);
 	}
+	printf("ooo22w23");
 	if(count_elements(stacks.a) == 1)
 	{
 		free(stacks.a);
