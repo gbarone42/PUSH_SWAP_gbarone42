@@ -1,7 +1,9 @@
-void	ft_sa(t_list **stack_a)
+#include "push_swap.h"
+/*
+void	ft_sa(t_stack **stack_a)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	tmp = *stack_a;
 	tmp2 = tmp->next;
@@ -12,9 +14,9 @@ void	ft_sa(t_list **stack_a)
 	return ;
 }
 
-void	ft_pa(t_list **stack_b, t_list **stack_a)
+void	ft_pa(t_stack **stack_b, t_stack **stack_a)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (*stack_b == NULL)
 		return ;
@@ -26,9 +28,9 @@ void	ft_pa(t_list **stack_b, t_list **stack_a)
 	return ;
 }
 
-void	ft_pb(t_list **stack_a, t_list **stack_b)
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (*stack_a == NULL)
 		return ;
@@ -40,10 +42,10 @@ void	ft_pb(t_list **stack_a, t_list **stack_b)
 	return ;
 }
 
-void	ft_ra(t_list **stack_a)
+void	ft_ra(t_stack **stack_a)
 {
-	t_list	*last;
-	t_list	*first;
+	t_stack	*last;
+	t_stack	*first;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
@@ -58,11 +60,11 @@ void	ft_ra(t_list **stack_a)
 	return ;
 }
 
-
-void	ft_rra(t_list **stack_a)
+*/
+void	ft_rra(t_stack **stack_a)
 {
-	t_list	*last;
-	t_list	*tmp;
+	t_stack	*last;
+	t_stack	*tmp;
 
 	last = *stack_a;
 	tmp = *stack_a;
@@ -79,10 +81,10 @@ void	ft_rra(t_list **stack_a)
 
 
 
-void	ft_sb(t_list **stack_b)
+void	ft_sb(t_stack **stack_b)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	tmp = *stack_b;
 	tmp2 = tmp->next;
@@ -93,10 +95,10 @@ void	ft_sb(t_list **stack_b)
 	return ;
 }
 
-void	ft_ss(t_list **stack_a, t_list **stack_b)
+void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	tmp = *stack_a;
 	tmp2 = tmp->next;
@@ -114,10 +116,10 @@ void	ft_ss(t_list **stack_a, t_list **stack_b)
 	return ;
 }
 
-void	ft_rb(t_list **stack_b)
+void	ft_rb(t_stack **stack_b)
 {
-	t_list	*last;
-	t_list	*first;
+	t_stack	*last;
+	t_stack	*first;
 
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return ;
@@ -132,10 +134,10 @@ void	ft_rb(t_list **stack_b)
 	return ;
 }
 
-void	ft_rr(t_list **stack_a, t_list **stack_b)
+void	ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list	*last;
-	t_list	*first;
+	t_stack	*last;
+	t_stack	*first;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
@@ -159,10 +161,10 @@ void	ft_rr(t_list **stack_a, t_list **stack_b)
 	return ;
 }
 
-void	ft_rrb(t_list **stack_b)
+void	ft_rrb(t_stack **stack_b)
 {
-	t_list	*last;
-	t_list	*tmp;
+	t_stack	*last;
+	t_stack	*tmp;
 
 	last = *stack_b;
 	tmp = *stack_b;
@@ -177,10 +179,10 @@ void	ft_rrb(t_list **stack_b)
 	write(1, "rrb\n", 4);
 }
 
-void	ft_rrr(t_list **stack_a, t_list **stack_b)
+void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list	*last;
-	t_list	*tmp;
+	t_stack	*last;
+	t_stack	*tmp;
 
 	last = *stack_a;
 	tmp = *stack_a;

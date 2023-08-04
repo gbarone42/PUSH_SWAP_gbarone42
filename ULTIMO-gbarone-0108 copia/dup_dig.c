@@ -73,11 +73,13 @@ int ft_isdigit_and_sign(int c)
 {
     if (c == '-' || c == '+')
     {
-        return 1; // Treat '-' and '+' as valid sign characters
+        return 0; // Treat '-' and '+' as valid sign characters
     }
     else if (c >= '0' && c <= '9')
     {
-        return 1; // Digit character
+        return 0; // Digit character
     }
-    return 0; // Not a digit or sign
+    return 1; // Not a digit or sign
 }
+
+

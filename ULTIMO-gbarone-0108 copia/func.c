@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		i = i * 10 + (*str - 48);
+		i = i * 10 + (*str - '0');
 		str++;
 	}
 	if (neg % 2 != 0)
@@ -41,7 +41,17 @@ int	ft_atoi(const char *str)
 	return (i);
 }
 
-static int	wordcount(const char *str, char c)
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	wordcount(const char *str, char c)
 {
 	int	count;
 	int	flag;
@@ -62,7 +72,7 @@ static int	wordcount(const char *str, char c)
 	return (count);
 }
 
-static char	*stralloc(const char *str, int start, int finish)
+char	*stralloc(const char *str, int start, int finish)
 {
 	char	*word;
 	int		i;

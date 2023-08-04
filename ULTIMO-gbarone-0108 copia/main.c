@@ -3,40 +3,153 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/02 23:28:25 by gbarone          ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2023/08/03 19:16:04 by gbarone          ###   ########.fr       */
+/*                                                                           */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_av(int ac, char **av)
-{
-	char **args;
-	int argz;
 
-	args = ft_split(av[1], ' ');
-	if (!args)
-		ft_error();
-	else if (ac <= 1)
-		ft_error_few_arg();
-	else if (ac == 2)
-	{	
-		argz = ft_atoi(av[1]);
-		if (check_duplicate(args) && !ft_isdigit_and_sign(argz))
+
+void free_split(char **split)
+{
+    if (!split)
+        return;
+
+    // Free each individual string
+    int i = 0;
+    while (split[i])
+    {
+        free(split[i]);
+        i++;
+    }
+
+    // Free the array of pointers
+    free(split);
+}
+
+
+int check_av2(char **av)
+{
+        char **args = ft_split(av[1], ' ');
+        if (!args)
+        {
+            ft_error();
+            return 1;
+        }
+
+        int i = 0;
+        while (args[i])
+        {
+            if (!check_duplicate(&args[i]))
+            {
+				//printf("sono");
+				free_split(args);
+                ft_errorr();
+				//printf("sono")
+                return 1;
+            }
+			int j = 0;
+		while (args[i][j])
 		{
-			ft_free_args(args); // Free memory allocated by split? just free(args);?
-			ft_error();
+            int ascii = args[i][j];
+			//printf("sono");
+            if (ft_isdigit_and_sign(ascii))
+            {
+				//printf("sono");
+				free_split(args);
+                ft_errorrr();
+                return 1;
+            }
+            j++;
 		}
-		ft_free_args(args); //`Free memory allocated by split?
-		return (0);
+		i++;
 	}
-	if (duplicates(ac,av) && digitsandsignsvalid(av))
+        free_split(args);
 	return(0);
 }
 
+/*
+int check_av( char **av)
+{
+	printf("sonoduen9");
+	int i = 0;
+	while(av[i])
+	{
+    	if (!check_duplicate(&av[i]) || !check_valid_digits(av[i]))
+    	{	
+			   ft_errorrrr();
+		   	return 1;
+		}
+		i++;
+	}
+    return 0;
+}*/
+/*
+int check_av(char **av)
+{
+	    char **args = ft_split(*av, ' ');
+        if (!args)
+        {
+			
+            ft_error();
+            return 1;
+        }
+
+    int i = 0;
+
+   while (args[i])
+    {
+		if (!check_duplicate(args))
+        {   
+
+			printf("ooook");
+			free_split(args);
+            ft_errorrrr();
+            return 1;
+        }
+        int j = 0;
+        while (args[i][j])
+        {
+            int ascii = args[i][j];
+            if (ft_isdigit_and_sign(ascii))
+            {
+				free_split(args);
+                ft_errorrrrr();
+                return 1;
+            }
+            j++;
+        }
+        i++;
+    }
+	free_split(args);
+    return 0;
+}
+
+*/
+int check_av(char **av)
+{
+    printf("sonodue");
+    int i = 0;
+    while (av[i])
+    {
+        int j = 0;
+        while (av[i][j])
+        {
+            if (!check_duplicate(&av[i]) /*|| ft_isdigit_and_sign(av[i][j])*/)
+            {
+                ft_errorrrr();
+                return 1;
+            }
+            j++;
+        }
+        i++;
+    }
+    return 0;
+}
 
 t_stack *allocate_stack(char **str)
 {
@@ -83,20 +196,37 @@ int count_elements(t_stack *A)
 
 int main(int ac, char **av)
 {
-	int argz;
-	t_inter stacks;
+	t_stack_list stacks;
 
-	if (check_av(ac, av))
-		return (1);
+	if(ac <= 1)
+	{
+		ft_error_few_arg();
+		return(1);
+	}
 	stacks.a = allocate_stack(av);
-	//  if (!stacks.a)
-    //{
-    //   printf("Memory allocation failed. Exiting...\n");
-    //    return 1;
-    //}
+	stacks.b = NULL;
+
+	if(ac == 2)
+	{
+
+		check_av2(av);
+		//printf("sonodue");
+		return(0);
+
+	}
+	if (ac > 1 && ac != 2) //(ac > 2)
+	{	
+		check_av(av);
+		return (0);
+	}
 	if(count_elements(stacks.a) == 1)
 	{
 		free(stacks.a);
 		return (0);
 	}
+	else
+	ft_radix_sort(&(stacks.a), &(stacks.b));
+	return(0);
 }
+
+
