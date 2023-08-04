@@ -22,6 +22,7 @@ typedef struct s_stack_list
 t_stack	*allocate_stack(char **str);
 int	main(int ac, char **av);
 int	check_av(char **av);
+int check_av_b(int ac, char **av);
 //
 //
 void ft_error(void);

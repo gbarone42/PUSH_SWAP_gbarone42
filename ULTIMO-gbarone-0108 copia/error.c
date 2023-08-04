@@ -3,8 +3,8 @@
 
 void ft_error_few_arg(void)
 {
-    write(1, "\n\033[1;31mError\033[0m\n\n", 19);
-        write(1, "\n\033[1;31mError\033[0m\n\n", 19);
+    write(1, "\n\033[1;31mError\033[0m\n\n", 20);
+        write(1, "\n\033[1;31mError\033[0m\n\n", 20);
     write(1, "        4444444       \n", 24);
     write(1, "       4       2      \n", 24);
     write(1, "      4               \n", 24);
@@ -15,8 +15,8 @@ void ft_error_few_arg(void)
     write(1, "          2           \n", 24);
     write(1, "         2            \n", 24);
     write(1, "        22222         \n", 24);
-    write(1, "\n\033[1;31mError00\033[0m\n\n", 21);
-    write(1, "\n", 1);
+    write(1, "\n\033[1;31mError00\033[0m\n\n", 22);
+    write(1, "\n", 2);
     exit(1);
 }
 
@@ -69,16 +69,14 @@ void ft_errorrr(void)
 
 void ft_errorrrr(void)
 {
-  write(1, "\n", 1);
-  write(1, "\n\033[1;31mError\033[0m\n\n", 19);
-    write(1, "           /\\___/\\      \n", 22);
-    write(1, "   <°)))><       /  O O  \\   <°)))>< \n", 22);
-    write(1, "           ( == ^ == )    \n", 22);
-    write(1, "   4        )      (     <°)))><\n", 21);
-    write(1, "           /        \\   \n", 22);
-    write(1, "           /          \\ 2\n", 23);
-    write(1, "       /_ _ _ _ _ _\\ \n", 22);
-    write(1, "\n\033[1;31mError04\033[0m\n\n", 21);
+  write(1, "\n", 2);
+    write(1, "   <°)))><       \n", 20);
+    write(1, "\n\033[1;31mError\033[0m\n\n", 20);
+    write(1, "     /\\_/\\     \n", 17);
+    write(1, "    ( o.o )    \n", 17);
+    write(1, "    > ^ <    42\n", 17);
+    write(1, "\n", 2);
+    write(1, "\n\033[1;31mError04\033[0m\n\n", 22);
     write(1, "\n", 1);
     exit(1);
 }

@@ -31,7 +31,7 @@ void free_split(char **split)
     free(split);
 }
 
-
+/// 
 int check_av2(char **av)
 {
         char **args = ft_split(av[1], ' ');
@@ -72,14 +72,14 @@ int check_av2(char **av)
 	return(0);
 }
 
-/*
-int check_av( char **av)
+
+int check_av(char **av)
 {
-	printf("sonoduen9");
+	//printf("sonoduen9");
 	int i = 0;
 	while(av[i])
 	{
-    	if (!check_duplicate(&av[i]) || !check_valid_digits(av[i]))
+    	if (!check_duplicate(&av[i]))
     	{	
 			   ft_errorrrr();
 		   	return 1;
@@ -87,7 +87,7 @@ int check_av( char **av)
 		i++;
 	}
     return 0;
-}*/
+}
 /*
 int check_av(char **av)
 {
@@ -130,26 +130,9 @@ int check_av(char **av)
 }
 
 */
-int check_av(char **av)
-{
-    printf("sonodue");
-    int i = 0;
-    while (av[i])
-    {
-        int j = 0;
-        while (av[i][j])
-        {
-            if (!check_duplicate(&av[i]) /*|| ft_isdigit_and_sign(av[i][j])*/)
-            {
-                ft_errorrrr();
-                return 1;
-            }
-            j++;
-        }
-        i++;
-    }
-    return 0;
-}
+
+
+
 
 t_stack *allocate_stack(char **str)
 {
@@ -194,6 +177,34 @@ int count_elements(t_stack *A)
 }
 
 
+
+
+int check_av_b(int ac, char **av)
+{
+    int i = 1; // Start from 1 to skip the program name (av[0])
+    while (i < ac)
+    {
+        int j = 0;
+        while (av[i][j] != '\0')
+        {
+			printf("wwww");
+            int ascii = av[i][j];
+            if (ft_isdigit_and_sign(ascii))
+            {
+				printf("zxwwzwwwaax");
+				ft_errorrrrr();
+				return 1;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    return 0;
+}
+
+
+
 int main(int ac, char **av)
 {
 	t_stack_list stacks;
@@ -217,6 +228,9 @@ int main(int ac, char **av)
 	if (ac > 1 && ac != 2) //(ac > 2)
 	{	
 		check_av(av);
+		printf("wwww");
+		check_av_b(ac,av);
+
 		return (0);
 	}
 	if(count_elements(stacks.a) == 1)
