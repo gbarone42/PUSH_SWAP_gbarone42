@@ -164,47 +164,81 @@ int check_av_b(int ac, char **av)
 }
 
 
-
-int main(int ac, char **av)
+void check_sorti()
 {
-	t_stack_list stacks;
+
+	//t_stack_list stacks;
 	if(ac <= 1)
 	{
-		ft_error_few_arg();
-		return(1);
+		//ft_error_few_arg();
+		write(1,"\n",1);
+		return(0);
 	}
-	if (ac >= 2)
+	else if(ac == 2)
+	{	
+			//printf("woooa");
+			//check_av2(av);
+			printf("is sort");
+			return (0);
+			//return(1);
+	}
+	else if(ac > 2)
 	{
 	    stacks.a = allocate_stack(av);
 	    stacks.b = NULL;
-	    if(ac == 2)
-		{	
-			//printf("woooa");
-			check_av2(av);
-			//return(1);
-		}
 	//printf("33woooa");
-		if (ac > 1 && ac != 2) //(ac > 2)
-		{	
-			check_av(av);
-			check_av_b(ac,av);
+		//if (ac > 1 && ac != 2) //(ac > 2)
+			//check_av(av);
+			//check_av_b(ac,av);
 			//return (0);
-		}
-
 	//printf("ooo22w23");
 		if(count_elements(stacks.a) == 1)
 		{	
 			printf("\n999ooo22w23");
-			free(stacks.a);
 			return (0);
 		}
 		//printf("2outside");
 		ft_radix_sort(&(stacks.a), &(stacks.b));
 	}
-		return(0);
+
+
 }
 
 
+int main(int ac, char **av)
+{	
+	t_stack *stack_a;
+	t_stack *stack_b;
+
+	stack_b = NULL;
+
+	if(check_av2(av) == 0 && check_av_b(ac,av) == 0 && check_av(av) == 0 )
+	{
+		stack_a = allocate_stack(av);
+		if (stack_a)
+			check_sorti(&stack_a, &stack_b);
+		ft_free_list(stack_a);
+		ft_free_list(stack_b); /// da fare la funzione di free
+		return (0);	
+	}
+	else
+		return(1);
+}
+
+
+
+
+void    ft_free_list(t_stack **lst)
+{
+    t_stack *temp;
+    while (*lst)
+    {
+        temp = (*lst)->next;
+        free(*lst);
+        *lst = temp;
+    }
+    *lst = NULL;
+}
 
 
 /*Time Complexity: The provided implementation might end up

@@ -10,11 +10,13 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/push_swap",
-            "args": [4, 2, 1, 0, 7, 87],
+            "args": [4, 2, 1, 0, 7, 871],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
+            "justMyCode": false,
+            "debug.allowBreakpointsEverywhere": true,
             "MIMode": "gdb",
             "setupCommands": [
                 {

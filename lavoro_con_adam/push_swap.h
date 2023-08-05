@@ -12,11 +12,11 @@ typedef struct s_stack
 	struct s_stack	*next;
 } t_stack;
 
-typedef struct s_stack_list
-{
-	t_stack		*a;
-	t_stack		*b;
-} t_stack_list;
+// typedef struct s_stack_list
+// {
+// 	t_stack		*a;
+// 	t_stack		*b;
+// } t_stack_list;
 
 
 t_stack	*allocate_stack(char **str);
@@ -66,5 +66,13 @@ void count_occurrences(t_stack **stack, int digit_place, int num_buckets, int *b
 void	ft_pa(t_stack **stack_b, t_stack **stack_a);
 void	ft_pb(t_stack **stack_a, t_stack **stack_b);
 void	ft_ra(t_stack **stack_a);
+
+void ft_putstr(const char *str);
+void ft_putchar(char c);
+void ft_lstadd_frontnum(t_stack **lst, t_stack *new);
+t_stack	*ft_lstlast(t_stack *lst);
+
+
+void    ft_lstadd_backnum(t_stack **lst, t_stack *new);
 
 #endif
