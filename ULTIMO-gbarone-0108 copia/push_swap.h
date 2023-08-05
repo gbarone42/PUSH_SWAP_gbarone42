@@ -43,11 +43,10 @@ int ft_strcmp(const char *str1, const char *str2);
 int check_duplicate(char **str);
 int	ft_isdigit_and_sign(int c);
 
-void ft_radix_sort(t_stack **stack_a, t_stack **stack_b);
 void move_from_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void move_zeros(t_stack **stack_a, t_stack **stack_b);
 int num_digits(int num);
-int get_msd(int num);
+int get_msd(int num,int digit);
 
 void free_split(char **split);
 int check_av2(char **av);
@@ -56,6 +55,13 @@ void ft_errorrr(void);
 void ft_errorrrr(void);
 void print_stack(t_stack *stack);
 void print_max_digit(int max_digit);
+
+
+void ft_radix_sort(t_stack **stack_a, t_stack **stack_b);
+void radix_sort(t_stack **stack_a, t_stack **stack_b, int num_digits_max);
+void counting_sort_digit_rec(t_stack **stack, int digit_place, int num_buckets, int *bucket_count);
+void count_occurrences(t_stack **stack, int digit_place, int num_buckets, int *bucket_count);
+
 
 void	ft_pa(t_stack **stack_b, t_stack **stack_a);
 void	ft_pb(t_stack **stack_a, t_stack **stack_b);

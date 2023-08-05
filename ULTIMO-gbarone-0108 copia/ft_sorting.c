@@ -1,67 +1,26 @@
-
 #include "push_swap.h"
-
-void	ft_pa(t_stack **stack_b, t_stack **stack_a)
-{
-	t_stack	*tmp;
-
-	if (*stack_b == NULL)
-		return ;
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	tmp->next = *stack_a;
-	*stack_a = tmp;
-	write(1, "pa\n", 3);
-	return ;
-}
-
-void	ft_pb(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*tmp;
-
-	if (*stack_a == NULL)
-		return ;
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	tmp->next = *stack_b;
-	*stack_b = tmp;
-	write(1, "pb\n", 3);
-	return ;
-}
-
-void	ft_ra(t_stack **stack_a)
-{
-	t_stack	*last;
-	t_stack	*first;
-
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
-	last = *stack_a;
-	first = *stack_a;
-	while (last->next != NULL)
-		last = last->next;
-	*stack_a = first->next;
-	first->next = NULL;
-	last->next = first;
-	write(1, "ra\n", 3);
-	return ;
-}
-
-int get_msd(int num)
-{
+/*
+int get_msd(int num) {
     int msd = 0;
-    while (num != 0)
-    {
-		msd = num % 10;
+    while (num != 0) {
+        msd = num % 10;
         num /= 10;
     }
     return msd;
+}*/
+
+int get_msd(int num, int digit) {
+    int divisor = 1;
+    int i = 1;
+    while (i < digit) {
+        divisor *= 10;
+        i++;
+    }
+    int msd = (num / divisor) % 10;
+    return msd;
 }
 
-// Helper function to calculate the number of digits in a number
-
-int num_digits(int num)
-{
+int num_digits(int num) {
     if (num == 0)
         return 1;
 
@@ -74,76 +33,127 @@ int num_digits(int num)
     return count;
 }
 
-// Helper function to move numbers with the current digit equal to 0 to stack B
+void ft_pa(t_stack **stack_b, t_stack **stack_a) {
+    t_stack *tmp;
 
+    if (*stack_b == NULL)
+        return;
+    tmp = *stack_b;
+    *stack_b = (*stack_b)->next;
+    tmp->next = *stack_a;
+    *stack_a = tmp;
+    write(1, "pa\n", 3);
+}
 
+void ft_pb(t_stack **stack_a, t_stack **stack_b) {
+    t_stack *tmp;
 
-void move_zeros(t_stack **stack_a, t_stack **stack_b)
-{
-    t_stack *current = *stack_a;
-    while (current != NULL)
-    {
-        int msd = get_msd(current->content);
-        printf("Current MSD: %d\n", msd);
-        printf("Current Content: %d\n", current->content);
-        if (msd == 0)
-        {
-            ft_pb(stack_a, stack_b); // Move the element to stack B
-            current = *stack_a;
-        }
-        else
-        {
-            ft_ra(stack_a); // Rotate stack A to the left (to process numbers with non-zero current digit)
-            if (current == *stack_a) {
-                current = (*stack_a)->next; // Move to the next element in stack_a
-            }
-         }        
-        //current = *stack_a; // Reinitialize the current pointer after rotation
-    
+    if (*stack_a == NULL)
+        return;
+    tmp = *stack_a;
+    *stack_a = (*stack_a)->next;
+    tmp->next = *stack_b;
+    *stack_b = tmp;
+    write(1, "pb\n", 3);
+}
+/*
+void ft_ra(t_stack **stack_a) {
+    t_stack *last;
+    t_stack *first;
+
+    if (*stack_a == NULL || (*stack_a)->next == NULL)
+        return;
+    last = *stack_a;
+    first = *stack_a;
+    while (last->next != NULL)
+        last = last->next;
+    *stack_a = first->next;
+    first->next = NULL;
+    last->next = first;
+    write(1, "ra\n", 3);
+}*/
+
+void ft_ra(t_stack **stack_a) {
+    t_stack *last;
+    t_stack *first;
+
+    if (*stack_a == NULL || (*stack_a)->next == NULL)
+        return; // If the stack is empty or has only one element, there is no need to rotate
+
+    last = *stack_a;
+    first = *stack_a;
+    while (last->next != NULL)
+        last = last->next;
+    *stack_a = first->next;
+    first->next = NULL;
+    last->next = first;
+    write(1, "ra\n", 3);
+}
+
+// Helper function to check if a stack is sorted in ascending order
+int is_sorted(t_stack *stack) {
+    while (stack && stack->next) {
+        if (stack->content > stack->next->content)
+            return 0;
+        stack = stack->next;
     }
+    return 1;
 }
 
-// Helper function to move numbers from stack B back to stack A in the correct order
-void move_from_b_to_a(t_stack **stack_a, t_stack **stack_b)
-{
-    while (*stack_b != NULL)
-        ft_pa(stack_b, stack_a);
-}
-
-// Custom radix sort implementation
-void ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
-{
-    int max_digit = 0;
+// The Radix Sort function
+void ft_radix_sort(t_stack **stack_a, t_stack **stack_b) {
+    int max_digits = 0;
+    int i;
+    stack_b = NULL;
+    // Find the number with the maximum digits in the stack_a
     t_stack *current = *stack_a;
-
-    //printf("outside");
-    // Find the maximum number to determine the number of digits in the largest number
-    while (current != NULL)
+    while (current)
     {
-
-      //  printf("1inside");
-        int msd = get_msd(current->content);
-        if (msd > max_digit)
-            max_digit = msd;
+        int digits = num_digits(current->content);
+        if (digits > max_digits)
+            max_digits = digits;
         current = current->next;
     }
-    print_max_digit(max_digit);
-
-    //printf("2outside");
-    int exp = 1;
-    while (max_digit >= exp)
+    printf("FINALMax Digits: %d\n", max_digits);
+    
+    //The code will now sort the array based on each digit's position 
+    //from the least significant digit to the most significant digit.
+    // Perform sorting based on digits
+    i = 1;
+    while (i <= max_digits)  //Looping over digits from least significant to most significant
     {
-        //printf("77777777");
-        move_zeros(stack_a, stack_b);
-        print_stack(*stack_a);
-        print_stack(*stack_b);
-        //printf("oooojjwjnnS");
-        move_from_b_to_a(stack_a, stack_b);
-        print_stack(*stack_a);
-        print_stack(*stack_b);
-        exp *= 10; // Move to the next digit position
+        t_stack *current = *stack_a;
+        t_stack *next;
+        while (current) //Looping over array elements to sort them based on the current digit
+        {
+            next = current->next;
+            int msd = get_msd(current->content, i);
+            if (msd == i)
+            {
+                ft_pb(stack_a, stack_b); // Move the current element to stack_b
+                current = *stack_a; // Restart the iteration from the beginning
+            }
+            else
+            {
+                printf("oooo\n");
+                ft_ra(stack_a); // Rotate the stack to bring next element to the top
+            }
+            current = next;
+        }
+        // Move elements from stack_b back to stack_a
+        while (*stack_b)
+        {
+            ft_pa(stack_b, stack_a);
+        }
+
+        i++;
     }
+
+    // Check if the stack is sorted in ascending order
+    if (is_sorted(*stack_a))
+        printf("The stack is sorted!\n");
+    else
+        printf("The stack is not sorted correctly!\n");
+
+        
 }
-
-
-
