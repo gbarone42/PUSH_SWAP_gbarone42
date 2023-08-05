@@ -90,6 +90,32 @@ int check_av(char **av)
 }
 
 
+int check_av_b(int ac, char **av)
+{
+    int i = 1; // Start from 1 to skip the program name (av[0])
+    while (i < ac)
+    {
+        int j = 0;
+        while (av[i][j] != '\0')
+        {
+			//printf("wwww");
+            int ascii = av[i][j];
+            if (ft_isdigit_and_sign(ascii))
+            {
+				//printf("zxwwzwwwaax");
+				ft_errorrrrr();
+				return 1;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    return 0;
+}
+
+
+
 t_stack *allocate_stack(char **str)
 {
 	int i;
@@ -119,6 +145,8 @@ t_stack *allocate_stack(char **str)
 	return (head);
 }
 
+
+
 int count_elements(t_stack *A)
 {
     int count;
@@ -137,40 +165,13 @@ int count_elements(t_stack *A)
 }
 
 
-
-
-int check_av_b(int ac, char **av)
-{
-    int i = 1; // Start from 1 to skip the program name (av[0])
-    while (i < ac)
-    {
-        int j = 0;
-        while (av[i][j] != '\0')
-        {
-			//printf("wwww");
-            int ascii = av[i][j];
-            if (ft_isdigit_and_sign(ascii))
-            {
-				//printf("zxwwzwwwaax");
-				ft_errorrrrr();
-				return 1;
-            }
-            j++;
-        }
-        i++;
-    }
-
-    return 0;
-}
-
-
-void check_sorti()
+void check_sorti(int ac, char **av, t_stack **stack_a, t_stack **stack_b)
 {
 
 	//t_stack_list stacks;
 	if(ac <= 1)
 	{
-		//ft_error_few_arg();
+		ft_error_few_arg();
 		write(1,"\n",1);
 		return(0);
 	}
@@ -184,21 +185,21 @@ void check_sorti()
 	}
 	else if(ac > 2)
 	{
-	    stacks.a = allocate_stack(av);
-	    stacks.b = NULL;
+		*stack_a = allocate_stack(av);
+        *stack_b = NULL;
 	//printf("33woooa");
 		//if (ac > 1 && ac != 2) //(ac > 2)
 			//check_av(av);
 			//check_av_b(ac,av);
 			//return (0);
 	//printf("ooo22w23");
-		if(count_elements(stacks.a) == 1)
+		if(count_elements(*stack_a) == 1)
 		{	
 			printf("\n999ooo22w23");
 			return (0);
 		}
 		//printf("2outside");
-		ft_radix_sort(&(stacks.a), &(stacks.b));
+		ft_radix_sort(&(*stack_a), &(*stack_b));
 	}
 
 
@@ -210,22 +211,21 @@ int main(int ac, char **av)
 	t_stack *stack_a;
 	t_stack *stack_b;
 
+	//stack_a = NULL;
 	stack_b = NULL;
 
 	if(check_av2(av) == 0 && check_av_b(ac,av) == 0 && check_av(av) == 0 )
 	{
 		stack_a = allocate_stack(av);
 		if (stack_a)
-			check_sorti(&stack_a, &stack_b);
-		ft_free_list(stack_a);
-		ft_free_list(stack_b); /// da fare la funzione di free
+			check_sorti(ac, av,&stack_a, &stack_b);
+		ft_free_list(&stack_a);
+		ft_free_list(&stack_b); /// da fare la funzione di free
 		return (0);	
 	}
 	else
 		return(1);
 }
-
-
 
 
 void    ft_free_list(t_stack **lst)
