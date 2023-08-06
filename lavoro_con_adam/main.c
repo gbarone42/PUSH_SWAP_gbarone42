@@ -173,14 +173,14 @@ void check_sorti(int ac, char **av, t_stack **stack_a, t_stack **stack_b)
 	{
 		ft_error_few_arg();
 		write(1,"\n",1);
-		return(0);
+		//return(0);
 	}
 	else if(ac == 2)
 	{	
 			//printf("woooa");
 			//check_av2(av);
 			printf("is sort");
-			return (0);
+			//return (0);
 			//return(1);
 	}
 	else if(ac > 2)
@@ -196,13 +196,25 @@ void check_sorti(int ac, char **av, t_stack **stack_a, t_stack **stack_b)
 		if(count_elements(*stack_a) == 1)
 		{	
 			printf("\n999ooo22w23");
-			return (0);
+			//return (0);
 		}
 		//printf("2outside");
 		ft_radix_sort(&(*stack_a), &(*stack_b));
 	}
 
 
+}
+
+void    ft_free_list(t_stack **lst)
+{
+    t_stack *temp;
+    while (*lst)
+    {
+        temp = (*lst)->next;
+        free(*lst);
+        *lst = temp;
+    }
+    *lst = NULL;
 }
 
 
@@ -225,19 +237,6 @@ int main(int ac, char **av)
 	}
 	else
 		return(1);
-}
-
-
-void    ft_free_list(t_stack **lst)
-{
-    t_stack *temp;
-    while (*lst)
-    {
-        temp = (*lst)->next;
-        free(*lst);
-        *lst = temp;
-    }
-    *lst = NULL;
 }
 
 
