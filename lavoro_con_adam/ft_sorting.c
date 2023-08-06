@@ -46,71 +46,6 @@ void ft_pa(t_stack **stack_b, t_stack **stack_a) {
 }
 
 
-// t_stack	*ft_lstlast(t_stack *lst)
-// {
-// 	if (lst == NULL)
-// 		return (NULL);
-// 	while (lst->next != 0)
-// 		lst = lst->next;
-// 	return (lst);
-// }
-
-
-// void    ft_lstadd_backnum(t_stack **lst, t_stack *new)
-// {
-//     t_stack *last;
-//     if (*lst)
-//     {
-//         last = ft_lstlast(*lst);
-//         last->next = new;
-//         new->next = NULL;
-//     }
-//     else
-//         *lst = new;
-// }
-
-// void    ft_lstadd_frontnum(t_stack **lst, t_stack *new)
-// {
-//     new->next = *lst;
-//     *lst = new;
-// }
-
-
-
-// void ft_putchar(char c)
-// {
-//     write(1, &c, 1);
-// }
-
-
-// void ft_putstr(const char *str)
-// {
-//     if (str != NULL) {
-//         ft_putchar(*str);
-//     }
-// }
-
-// void    ft_pb(t_stack **stack_a, t_stack **stack_b)
-// {
-//     t_stack *tmp;
-//     if (*stack_a)
-//     {
-//         if (!(*stack_b))
-//         {
-//             ft_lstadd_backnum(stack_b, (*stack_a));
-//             (*stack_a) = (*stack_a)->next;
-//             (*stack_b)->next = NULL;
-//         }
-//         else
-//         {
-//             tmp = (*stack_a)->next;
-//             ft_lstadd_frontnum(stack_b, (*stack_a));
-//             (*stack_a) = tmp;
-//         }
-//         ft_putstr("pb\n");
-//     }
-// }
-
  void ft_pb(t_stack **stack_a, t_stack **stack_b)
  {
      t_stack *tmp;
@@ -123,22 +58,7 @@ void ft_pa(t_stack **stack_b, t_stack **stack_a) {
      *stack_b = tmp;
      write(1, "pb\n", 3);
  }
-/*
-void ft_ra(t_stack **stack_a) {
-    t_stack *last;
-    t_stack *first;
 
-    if (*stack_a == NULL || (*stack_a)->next == NULL)
-        return;
-    last = *stack_a;
-    first = *stack_a;
-    while (last->next != NULL)
-        last = last->next;
-    *stack_a = first->next;
-    first->next = NULL;
-    last->next = first;
-    write(1, "ra\n", 3);
-}*/
 
 void ft_ra(t_stack **stack_a) {
     t_stack *last;
@@ -181,7 +101,7 @@ void ft_radix_sort(t_stack **stack_a, t_stack **stack_b) {
             max_digits = digits;
         current = current->next;
     }
-    printf("FINALMax Digits: %d\n", max_digits);
+    printf("\nFINALMax Digits: %d\n", max_digits);
     
     //The code will now sort the array based on each digit's position 
     //from the least significant digit to the most significant digit.

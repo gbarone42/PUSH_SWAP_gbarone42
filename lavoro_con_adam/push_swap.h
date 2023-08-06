@@ -49,7 +49,10 @@ int num_digits(int num);
 int get_msd(int num,int digit);
 
 void free_split(char **split);
-int check_av2(char **av);
+int check_av2(int ac, char **av);
+int check_av3(char **args, int ac);
+int validate_args(char **args);
+
 void ft_errorrrrr(void);
 void ft_errorrr(void);
 void ft_errorrrr(void);
