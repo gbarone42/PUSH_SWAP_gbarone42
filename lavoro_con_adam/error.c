@@ -4,17 +4,9 @@
 void ft_error_few_arg(void)
 {
     write(1, "\n\033[1;31mError\033[0m\n\n", 20);
-        write(1, "\n\033[1;31mError\033[0m\n\n", 20);
-    write(1, "        4444444       \n", 24);
-    write(1, "       4       2      \n", 24);
-    write(1, "      4               \n", 24);
-    write(1, "     4444444          \n", 24);
-    write(1, "            22        \n", 24);
-    write(1, "            2 2       \n", 24);
-    write(1, "      4444444         \n", 24);
-    write(1, "          2           \n", 24);
-    write(1, "         2            \n", 24);
-    write(1, "        22222         \n", 24);
+    write(1, "4  (\\___/)           \n", 24);
+    write(1, "   (='.'=)           \n", 24);
+    write(1, "   (\")_(\")          2\n", 24);
     write(1, "\n\033[1;31mError00\033[0m\n\n", 22);
     write(1, "\n", 2);
     exit(1);

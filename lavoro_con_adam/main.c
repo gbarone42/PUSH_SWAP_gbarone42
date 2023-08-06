@@ -33,14 +33,18 @@ void free_split(char **split)
 
 /// 
 int check_av2(char **av)
-{
+{	
+		if(!av[1] || av[1][0] == '\0')
+		{	
+			ft_error_few_arg();
+			return(1);
+		}
         char **args = ft_split(av[1], ' ');
-        if (!args)
-        {
-            ft_error();
-            return 1;
-        }
-
+        // // // if (!args)
+        // // // {
+        // // //     ft_error();
+        // // //     return 1;
+        // // // }
         int i = 0;
         while (args[i])
         {
@@ -93,25 +97,27 @@ int check_av(char **av)
 int check_av_b(int ac, char **av)
 {
     int i = 1; // Start from 1 to skip the program name (av[0])
-    while (i < ac)
-    {
-        int j = 0;
-        while (av[i][j] != '\0')
-        {
-			//printf("wwww");
-            int ascii = av[i][j];
-            if (ft_isdigit_and_sign(ascii))
-            {
-				//printf("zxwwzwwwaax");
-				ft_errorrrrr();
-				return 1;
-            }
-            j++;
-        }
-        i++;
-    }
-
-    return 0;
+    if(ac > 2)
+	{
+		while (i < ac)
+    	{
+        	int j = 0;
+       	 while (av[i][j] != '\0')
+        	{
+				//printf("wwww");
+            	int ascii = av[i][j];
+           	 if (ft_isdigit_and_sign(ascii))
+            	{
+					//printf("zxwwzwwwaax");
+					ft_errorrrrr();
+					return 1;
+           	 }
+           	 j++;
+        	}
+       	 i++;
+    	}
+	}
+	return 0;
 }
 
 
@@ -124,11 +130,17 @@ t_stack *allocate_stack(char **str)
 	t_stack *prev = NULL;
 
 	i = 0;
+
+
+
+
+
 	//printf("outsideloopallocate");
 	if (!str || !str[0])// Handle the case of an empty input or NULL pointer
         return NULL;
 	while (str[i])//till its !(NULL), till encounters NULLpointer // linked list is built during the loop
-	{
+	{			
+		printf("1outside");
 		//	printf("inside loop");
 		current = malloc(sizeof(t_stack));//size of memory block is determined by the size  oft_stack structure representing a node in the linked list.
 		if (!current) // After allocating memory for the current node, the function checks if the allocation was successful by verifying if current is not NULL. If the allocation fails (current is NULL), the function returns NULL, indicating that there was a memory allocation failure. This can be handled later in the program if needed.
@@ -167,7 +179,7 @@ int count_elements(t_stack *A)
 
 void check_sorti(int ac, char **av, t_stack **stack_a, t_stack **stack_b)
 {
-
+		
 	//t_stack_list stacks;
 	if(ac <= 1)
 	{
@@ -175,15 +187,8 @@ void check_sorti(int ac, char **av, t_stack **stack_a, t_stack **stack_b)
 		write(1,"\n",1);
 		//return(0);
 	}
-	else if(ac == 2)
-	{	
-			//printf("woooa");
-			//check_av2(av);
-			printf("is sort");
-			//return (0);
-			//return(1);
-	}
-	else if(ac > 2)
+
+	else if(ac >= 2)
 	{
 		*stack_a = allocate_stack(av);
         *stack_b = NULL;
@@ -227,7 +232,7 @@ int main(int ac, char **av)
 	stack_b = NULL;
 
 	if(check_av2(av) == 0 && check_av_b(ac,av) == 0 && check_av(av) == 0 )
-	{
+	{	
 		stack_a = allocate_stack(av);
 		if (stack_a)
 			check_sorti(ac, av,&stack_a, &stack_b);
