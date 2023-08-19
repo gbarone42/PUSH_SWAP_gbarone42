@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:14:54 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/19 02:15:40 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/19 04:01:08 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_lstdelone(t_stack *lst, void (*del)(void*))
 	del(lst->content);
 	free(lst);
 }
-
 
 void	ft_lstclear(t_stack **lst, void (*del)(void*))
 {
@@ -76,7 +75,6 @@ void	ft_free_arr(char **str)
 // 			return ;
 // 		}
 // 		else
-			
 // 	}
 // }
 
@@ -125,7 +123,7 @@ int	main(int ac, char **av)
 		free(hold);
 	if (ft_strlen_arr(str) == 1 || ac == 2)
 	{
-		ft_free_arr(str);	
+		ft_free_arr(str);
 		return (0);
 	}
 	else

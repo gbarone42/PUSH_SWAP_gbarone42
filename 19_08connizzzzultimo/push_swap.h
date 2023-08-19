@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 21:43:22 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/19 02:26:51 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/19 03:56:45 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,16 @@ int			get_index(t_stack *stack, int value);
 int			find_min(t_stack *stack);
 void		ft_free_arr(char **str);
 void		ft_lstadd_back(t_stack **lst, t_stack *new);
-t_stack	*ft_lstnew(void *content);
+t_stack		*ft_lstnew(void *content);
 
 void		quick_sort(int arr[], int left, int right);
 int			binary_search(int a[], int e, int l, int r);
 void		create_list(char **av, t_stack **stack_a);
 void		create_lists(int ac, char **av, t_stack **stack_a, t_hold *hold);
 
-
 void		swap(int *arr, int i, int j);
 int			*ft_copy_nums(int i, char **nums, int *arr, long int *new_num);
-void		ft_add_to_list(t_stack **stack_a, int size, long int *new_num, int *arr);
+void		add_tolst(t_stack **stack_a, int size, long int *new_num, int *arr);
 void		copy_nums(int i, char **av, int *arr, t_hold *hold);
 void		ft_lstadd_front(t_stack **lst, t_stack *new);
 

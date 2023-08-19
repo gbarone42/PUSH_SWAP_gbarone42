@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_creation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 00:20:45 by gbarone           #+#    #+#             */
-/*   Updated: 2023/08/19 02:19:58 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/19 03:59:21 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	create_list(char **av, t_stack **stack_a)
 	while (++i < size)
 		new_num[i] = arr[i];
 	quick_sort(arr, 0, size - 1);
-	ft_add_to_list(stack_a, size, new_num, arr);
+	add_tolst(stack_a, size, new_num, arr);
 	free(arr);
 	free(new_num);
 	ft_free_arr(nums);

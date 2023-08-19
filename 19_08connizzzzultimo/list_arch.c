@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_arch.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <gbarone@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:08:27 by naal-jen          #+#    #+#             */
-/*   Updated: 2023/08/19 01:32:58 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/08/19 03:58:43 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	*ft_copy_nums(int i, char **nums, int *arr, long int *new_num)
 			free(new_num);
 			ft_free_arr(nums);
 			free(a);
-            write(1, "Error\n", 6);
+			write(1, "Error\n", 6);
 			exit(1);
 		}
 		arr[i] = *a;
@@ -48,7 +48,7 @@ int	*ft_copy_nums(int i, char **nums, int *arr, long int *new_num)
 	return (arr);
 }
 
-void	ft_add_to_list(t_stack **stack_a, int size, long int *new_num, int *arr)
+void	add_tolst(t_stack **stack_a, int size, long int *new_num, int *arr)
 {
 	int			i;
 	long int	*a;

@@ -118,7 +118,6 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	write(1, "pb\n", 3);
 }
 
-
 // void	ft_pa(t_stack **stack_b, t_stack **stack_a)
 // {
 // 	t_stack	*tmp;
