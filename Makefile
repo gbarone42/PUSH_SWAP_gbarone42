@@ -1,56 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mcerchi <mcerchi@student.42roma.it>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/26 14:47:54 by mcerchi           #+#    #+#              #
-#    Updated: 2022/02/26 14:49:31 by mcerchi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS =	main.c \
+	dup_dig.c \
+	error.c \
+	error2.c \
+	rdx_srt.c \
+	func.c \
+	func2.c	\
+	sort235.c	\
+	frees.c	\
+	check_ar.c	\
+	stck_op.c \
+	check_sorted.c	\
+	check_at.c \
+	list_creation.c \
+	list_arch.c
 
-NAME		=	push_swap
 
-NAME_BONUS	=	checker
+NAME = push_swap
 
-SRC			=	push_swap.c utils.c operations_one.c operations_two.c\
-				operations_three.c order.c order_two.c order_three.c\
-				lis.c sort.c\
+OBJS = $(SRCS:.c=.o) 
 
-SRC_BONUS	=	checker.c check_write.c check_op_one.c check_op_two.c\
-				check_op_three.c\
+CC = gcc -g
 
-LIBFT		=	libft/libft.a
+CC_FLAGS = -Wall -Werror -Wextra
 
-OBJ			=	$(SRC:.c=.o)
+GREEN='\033[32m'
+CORSIVO='\033[3m'
+GRAY='\033[2;37m'
 
-OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
+.c.o :
+	@echo $(CORSIVO) $(GRAY)"                                                                      -    Compiling    - "
+	@$(CC) $(CC_FLAGS) -c $< -o $@
 
-CC			=	gcc
+$(NAME): $(OBJS)
+	@echo $(CORSIVO) $(GREEN)"                                                                                                          -   Welcome  -  PUSH_SWAP2   -   gbarone   -   42 \n"$
+	@$(CC) $(CC_FLAGS) $(OBJS) -o $(NAME)      
 
-RM			=	rm -f
-
-CFLAGS		=	-Wall -Wextra -Werror
-
-$(NAME):	$(OBJ)
-			make -C ./libft
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
-
-all:		$(NAME)
+all: $(NAME)
 
 clean:
-			make clean -C libft
-			${RM} $(OBJ) $(OBJ_BONUS)
+	@rm -rf $(OBJS)
 
-fclean: 	clean
-			make fclean -C libft
-			${RM} $(NAME) $(NAME_BONUS) ${OBJ} $(OBJ_BONUS)
+fclean: clean
+	@rm -f $(NAME)
 
-re:			fclean bonus
-
-bonus:		all $(OBJ_BONUS)
-			$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJ_BONUS) $(LIBFT)
-
-
-.PHONY:		all clean fclean re
+re: fclean all
